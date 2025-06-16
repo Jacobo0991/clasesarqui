@@ -1,0 +1,18 @@
+ORG 100H
+
+SECTION .text
+    ; LIMPIAR LOS REGISTROS
+    XOR AX, AX
+    XOR BX, BX
+    XOR CX, CX
+
+    MOV BL, 0xBC
+    MOV [200h], BL
+
+    MOV AL, [200h]
+    MOV CL, 03d
+    DIV CL
+    MOV [210h], AL ; GUARDAR EL COCIENTE 
+    MOV [211h], AH ; GUARDAR EL RESIDUO 
+
+    INT 20H
